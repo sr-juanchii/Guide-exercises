@@ -6,7 +6,6 @@ Lenguaje de Programacion: C++
 Programador: Juan Carlos Navas
 Cedula: V-28.326.698
 Descripcion del Programa: Que rellene un array con los 100 primeros números enteros y los muestre en pantalla.
-(coloco aqui el enumciado del ejercicio de la guia)
 ---------------------------------------------------*/
 
 #include <math.h>
@@ -26,8 +25,6 @@ void mostrarArray(int elArray[], int n);
 // FUNCIONES
 //=======================================================*/
 
-//------------------------------------------
-// Definición de la función que rellena un array con los números del 1 al n
 void rellenarArray(int elArray[], int n)
 {
     for (int i = 0; i < n; i++)
@@ -36,7 +33,6 @@ void rellenarArray(int elArray[], int n)
     }
 }
 
-// Definición de la función que muestra el array en pantalla
 void mostrarArray(int elArray[], int n)
 {
     cout << "Los primeros 100 numeros enteros:" << endl;
