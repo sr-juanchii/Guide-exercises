@@ -19,18 +19,22 @@ using namespace std;
 
 //======================================================
 const int arraySize = 10;
-int elArray[arraySize];
+double elArray[arraySize];
 //=======================================================
-void rellenarRandom(int elArray[], int n);
-void mostrarArray(int elArray[], int n);
-void sortRelleno(int elArray[], int n);
+void rellenarArray(double[], int);
+
+double adicion(double[], int);
+double sustraccion(double[], int);
+double multiplicacion(double[], int);
+double division(double[], int);
+
+void mostrarResultados(double, double, double, double);
 
 /*=======================================================
 // FUNCION PRINCIPAL
 //======================================================*/
 int main()
 {
-    srand(time(NULL));
 
     cout << "**********************************" << endl
          << endl;
@@ -41,9 +45,15 @@ int main()
     system("PAUSE");
     system("cls");
 
-    rellenarRandom(elArray, arraySize);
-    sortRelleno(elArray, arraySize);
-    mostrarArray(elArray, arraySize);
+    rellenarArray(elArray, arraySize);
+
+    double A = adicion(elArray, arraySize);
+    double S = sustraccion(elArray, arraySize);
+    double M = multiplicacion(elArray, arraySize);
+    double D = division(elArray, arraySize);
+
+    mostrarResultados(A, S, M, D);
+
     return 0;
 }
 /*=======================================================
@@ -51,28 +61,66 @@ int main()
 //=======================================================*/
 
 //------------------------------------------
-void rellenarRandom(int elArray[], int n)
+void rellenarArray(int elArray[], int n)
 {
+    cout << "Introduce " << n << " numeros:\n";
     for (int i = 0; i < n; i++)
     {
-        elArray[i] = rand() % 100 + 1;
+        cin >> elArray[i];
     }
 }
-
-void sortRelleno(int elArray[], int n)
+double adicion(double elArray[], int n)
 {
-
-    // sort(elArray, elArray + n); // ORDENA NUMEROS DE MENOR A MAYOR
-
-    sort(elArray, elArray + n, greater<int>()); // ORDENA NUMEROS DE MAYOR A MENOR
-}
-
-void mostrarArray(int elArray[], int n)
-{
-    cout << "Los " << n << " números aleatorios son:" << endl;
+    double A = 0;
     for (int i = 0; i < n; i++)
     {
-        cout << elArray[i] << " ";
+        A += elArray[i];
     }
-    cout << endl;
+    return A;
+}
+double sustraccion(double elArray[], int n)
+{
+    double S = elArray[0];
+    for (int i = 1; i < n; i++)
+    {
+        S -= elArray[i];
+    }
+    return S;
+}
+double multiplicacion(double elArray[], int n)
+{
+    double M = 1;
+    for (int i = 0; i < n; i++)
+    {
+        M *= elArray[i];
+    }
+    return M;
+}
+double division(double elArray[], int n)
+{
+    double D = elArray[0];
+    if (D == 0) {
+        cout << "No se puede dividir por cero\n";
+        return NAN; // or -1
+    }
+    for (int i = 1; i < n; i++)
+    {
+        if (elArray[i] != 0)
+            D /= elArray[i];
+        else
+        {
+            cout << "No se puede dividir por cero\n";
+            D = NAN; // or -1
+            break;
+        }
+    }
+    return D;
+}
+
+void mostrarResultados(double A, double S, double M, double D)
+{
+    cout << "La suma de los numeros es: " << A << "\n";
+    cout << "La resta de los numeros es: " << S << "\n";
+    cout << "La multiplicacion de los numeros es: " << M << "\n";
+    cout << "La division de los numeros es: " << D << "\n";
 }
