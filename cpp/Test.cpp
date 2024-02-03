@@ -1,47 +1,67 @@
 #include <iostream>
-using namespace std;
+#include <vector>
+// Declaración de variables globales
+int vectorSize = 5;
+int *elVector(vectorSize);
+int *elVectorsito(vectorSize);
+int sumaAlgebraica;
+float promedioVector1;
+float promedioVector2;
+float promedioGeneral;
 
-int main() {
-  // Declarar un array de tamaño 10
-  int array[10];
+// Prototipos de funciones
+void rellenarVector(int *vector, int tamanio);
+float calcularPromedio(int *vector, int tamanio);
+void calcularSumaAlgebraica();
+void mostrarResultados();
 
-  // Declarar variables para almacenar la suma, la resta, la multiplicación y la división
-  int suma = 0;
-  int resta = 0;
-  int multiplicacion = 1;
-  double division = 1;
+int main()
+{
+  // Lectura del primer vector
+  rellenarVector(elVector, vectorSize);
 
-  // Leer 10 números por teclado y almacenarlos en el array
-  cout << "Introduce 10 números:" << endl;
-  for (int i = 0; i < 10; i++) {
-    cin >> array[i];
-    // Sumar los elementos del array
-    suma += array[i];
-    // Restar los elementos del array
-    if (i == 0) {
-      // El primer elemento se asigna a la resta
-      resta = array[i];
-    } else {
-      // Los demás elementos se restan a la resta
-      resta -= array[i];
-    }
-    // Multiplicar los elementos del array
-    multiplicacion *= array[i];
-    // Dividir los elementos del array
-    if (i == 0) {
-      // El primer elemento se asigna a la división
-      division = array[i];
-    } else {
-      // Los demás elementos se dividen a la división
-      division /= array[i];
-    }
-  }
+  // Lectura del segundo vector
+  rellenarVector(elVectorsito, vectorSize);
 
-  // Mostrar los resultados en pantalla
-  cout << "La suma de todos los números es: " << suma << endl;
-  cout << "La resta de todos los números es: " << resta << endl;
-  cout << "La multiplicación de todos los números es: " << multiplicacion << endl;
-  cout << "La división de todos los números es: " << division << endl;
+  // Cálculo de la suma algebraica
+  calcularSumaAlgebraica();
+
+  // Cálculo del promedio del primer vector
+  promedioVector1 = calcularPromedio(elVector, vectorSize);
+
+  // Cálculo del promedio del segundo vector
+  promedioVector2 = calcularPromedio(elVectorsito, vectorSize);
+
+  // Cálculo del promedio general
+  promedioGeneral = (promedioVector1 + promedioVector2) / 2;
+
+  // Mostrar resultados
+  mostrarResultados();
+
+  // Liberar memoria de los vectores
+  delete[] elVector;
+  delete[] elVectorsito;
 
   return 0;
+}
+
+// Función para leer un vector
+void leerVector(int *vector, int tamanio)
+{
+  for (int i = 0; i < tamanio; i++)
+  {
+    std::cout << "Ingrese el valor " << i + 1 << " del vector: ";
+    std::cin >> vector[i];
+  }
+}
+
+// Función para calcular el promedio de un vector
+float calcularPromedio(int *vector, int tamanio)
+{
+  float suma = 0;
+  for (int i = 0; i < tamanio; i++)
+  {
+    suma += vector[i];
+  }
+  return suma;
 }

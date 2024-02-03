@@ -18,19 +18,22 @@ Descripcion del Programa:
 using namespace std;
 
 //======================================================
-const int arraySize = 10;
+const int arraySize = 5;
 int elArray[arraySize];
+int elArrayMultiply[arraySize];
+int elArraySort[arraySize];
 //=======================================================
-void rellenarRandom(int elArray[], int n);
-void mostrarArray(int elArray[], int n);
-void sortRelleno(int elArray[], int n);
+
+void rellenarArray(int elArray[]);
+void multiplyArray(int elArray[], int elArrayMultiply[]);
+void mostrarArray(int elArray[], int elArrayMultiply[], int elArraySort[]);
+void sortArray(int elArrayMultiply[], int elArraySort[]);
 
 /*=======================================================
 // FUNCION PRINCIPAL
 //======================================================*/
 int main()
 {
-    srand(time(NULL));
 
     cout << "**********************************" << endl
          << endl;
@@ -41,38 +44,75 @@ int main()
     system("PAUSE");
     system("cls");
 
-    rellenarRandom(elArray, arraySize);
-    sortRelleno(elArray, arraySize);
-    mostrarArray(elArray, arraySize);
+    rellenarArray(elArray);
+
+    multiplyArray(elArray, elArrayMultiply);
+
+    sortArray(elArrayMultiply, elArraySort);
+
+    mostrarArray(elArray, elArrayMultiply, elArraySort);
+
     return 0;
 }
 /*=======================================================
 // FUNCIONES
 //=======================================================*/
-
-//------------------------------------------
-void rellenarRandom(int elArray[], int n)
+void rellenarArray(int elArray[])
 {
-    for (int i = 0; i < n; i++)
+    cout << "Introduce 5 números por teclado:\n";
+    for (int i = 0; i < 5; i++)
     {
-        elArray[i] = rand() % 100 + 1;
+        cin >> elArray[i];
     }
 }
 
-void sortRelleno(int elArray[], int n)
+void multiplyArray(int elArray[], int elArrayMultiply[])
 {
-
-    // sort(elArray, elArray + n); // ORDENA NUMEROS DE MENOR A MAYOR
-
-    sort(elArray, elArray + n, greater<int>()); // ORDENA NUMEROS DE MAYOR A MENOR
+    for (int i = 0; i < 5; i++)
+    {
+        elArrayMultiply[i] = elArray[i] * 10;
+    }
 }
 
-void mostrarArray(int elArray[], int n)
+void sortArray(int elArrayMultiply[], int elArraySort[])
 {
-    cout << "Los " << n << " números aleatorios son:" << endl;
-    for (int i = 0; i < n; i++)
+
+    for (int i = 0; i < 5; i++)
+    {
+        int min = i;
+        for (int j = i + 1; j < 5; j++)
+        {
+            if (elArrayMultiply[j] < elArrayMultiply[min])
+            {
+                min = j;
+            }
+        }
+        int aux = elArrayMultiply[i];
+        elArrayMultiply[i] = elArrayMultiply[min];
+        elArrayMultiply[min] = aux;
+        elArraySort[i] = elArrayMultiply[i];
+    }
+}
+void mostrarArray(int elArray[], int elArrayMultiply[], int elArraySort[])
+{
+    cout << "Los tres arrays son:\n";
+    cout << "Array original:\n";
+    for (int i = 0; i < 5; i++)
     {
         cout << elArray[i] << " ";
     }
-    cout << endl;
+    cout << "\n";
+    cout << "Array multiplicado por 10:\n";
+    for (int i = 0; i < 5; i++)
+    {
+        cout << elArrayMultiply[i] << " ";
+    }
+    cout << "\n";
+    cout << "Array ordenado de menor a mayor:\n";
+    for (int i = 0; i < 5; i++)
+    {
+        cout << elArraySort[i] << " ";
+    }
+    cout << "\n";
 }
+//------------------------------------------

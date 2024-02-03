@@ -18,19 +18,20 @@ Descripcion del Programa:
 using namespace std;
 
 //======================================================
-const int arraySize = 10;
+const int arraySize = 5;
 int elArray[arraySize];
+int elArrayMultiply[arraySize];
 //=======================================================
-void rellenarRandom(int elArray[], int n);
-void mostrarArray(int elArray[], int n);
-void sortRelleno(int elArray[], int n);
+
+void rellenarArray(int elArray[]);
+void multiplyArray(int elArray[], int elArrayMultiply[]);
+void mostrarArray(int elArray[], int elArrayMultiply[]);
 
 /*=======================================================
 // FUNCION PRINCIPAL
 //======================================================*/
 int main()
 {
-    srand(time(NULL));
 
     cout << "**********************************" << endl
          << endl;
@@ -41,38 +42,40 @@ int main()
     system("PAUSE");
     system("cls");
 
-    rellenarRandom(elArray, arraySize);
-    sortRelleno(elArray, arraySize);
-    mostrarArray(elArray, arraySize);
+    rellenarArray(elArray);
+
+    multiplyArray(elArray, elArrayMultiply);
+
+    mostrarArray(elArray, elArrayMultiply);
+
     return 0;
 }
 /*=======================================================
 // FUNCIONES
 //=======================================================*/
+void rellenarArray(int elArray[])
+{
+    cout << "Introduce 5 numeros por teclado:\n";
+    for (int i = 0; i < 5; i++)
+    {
+        cin >> elArray[i];
+    }
+}
 
+void multiplyArray(int elArray[], int elArrayMultiply[])
+{
+    for (int i = 0; i < 5; i++)
+    {
+        elArrayMultiply[i] = elArray[i] * 2;
+    }
+}
+
+void mostrarArray(int elArray[], int elArrayMultiply[])
+{
+    cout << "Los valores originales y los valores del array son:\n";
+    for (int i = 0; i < 5; i++)
+    {
+        cout << elArray[i] << " -> " << elArrayMultiply[i] << "\n";
+    }
+}
 //------------------------------------------
-void rellenarRandom(int elArray[], int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        elArray[i] = rand() % 100 + 1;
-    }
-}
-
-void sortRelleno(int elArray[], int n)
-{
-
-    // sort(elArray, elArray + n); // ORDENA NUMEROS DE MENOR A MAYOR
-
-    sort(elArray, elArray + n, greater<int>()); // ORDENA NUMEROS DE MAYOR A MENOR
-}
-
-void mostrarArray(int elArray[], int n)
-{
-    cout << "Los " << n << " números aleatorios son:" << endl;
-    for (int i = 0; i < n; i++)
-    {
-        cout << elArray[i] << " ";
-    }
-    cout << endl;
-}
