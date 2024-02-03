@@ -61,7 +61,7 @@ int main()
 //=======================================================*/
 
 //------------------------------------------
-void rellenarArray(int elArray[], int n)
+void rellenarArray(double elArray[], int n)
 {
     cout << "Introduce " << n << " numeros:\n";
     for (int i = 0; i < n; i++)
