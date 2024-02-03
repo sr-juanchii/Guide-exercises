@@ -18,19 +18,17 @@ Descripcion del Programa:
 using namespace std;
 
 //======================================================
-const int arraySize = 10;
+const int arraySize = 100;
 int elArray[arraySize];
+int sumaTotal = 0;
 //=======================================================
-void rellenarRandom(int elArray[], int n);
-void mostrarArray(int elArray[], int n);
-void sortRelleno(int elArray[], int n);
-
+void rellenarInpares(int elArray[], int arraySize);
+void mostrarArray(int elArray[], int arraySize);
 /*=======================================================
 // FUNCION PRINCIPAL
 //======================================================*/
 int main()
 {
-    srand(time(NULL));
 
     cout << "**********************************" << endl
          << endl;
@@ -41,8 +39,7 @@ int main()
     system("PAUSE");
     system("cls");
 
-    rellenarRandom(elArray, arraySize);
-    sortRelleno(elArray, arraySize);
+    rellenarInpares(elArray, arraySize);
     mostrarArray(elArray, arraySize);
     return 0;
 }
@@ -51,28 +48,28 @@ int main()
 //=======================================================*/
 
 //------------------------------------------
-void rellenarRandom(int elArray[], int n)
+void rellenarInpares(int elArray[], int arraySize)
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < arraySize; i++)
     {
-        elArray[i] = rand() % 100 + 1;
+        elArray[i] = 2 * i + 1;
+        
+        //SUMA DE TODOS LOS NUMERO IMPARES
+        sumaTotal += elArray[i];
     }
 }
-
-void sortRelleno(int elArray[], int n)
+void mostrarArray(int elArray[], int arraySize)
 {
-
-    // sort(elArray, elArray + n); // ORDENA NUMEROS DE MENOR A MAYOR
-
-    sort(elArray, elArray + n, greater<int>()); // ORDENA NUMEROS DE MAYOR A MENOR
-}
-
-void mostrarArray(int elArray[], int n)
-{
-    cout << "Los " << n << " números aleatorios son:" << endl;
-    for (int i = 0; i < n; i++)
+    cout << "Los " << arraySize << " primeros numeros impares son: " << endl;
+    for (int i = 0; i < arraySize; i++)
     {
         cout << elArray[i] << " ";
     }
     cout << endl;
+
+    system("PAUSE");
+
+    //MOSTRAR LA SUMA TOTAL DE LOS NUMEROS
+    cout << "La sumatoria de los " << arraySize << " primeros numeros impares es:" << endl;
+    cout << sumaTotal;
 }
