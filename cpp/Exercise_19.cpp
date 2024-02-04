@@ -1,78 +1,70 @@
 /*-------------------------------------------------
 Fecha: 31 - Enero - 2024
 Catedra: Algoritmos y Programacion
-NombredelPrograma:
+Nombre del Programa: Contar vocales
 Lenguaje de Programacion: C++
 Programador: Juan Carlos Navas
 Cedula: V-28.326.698
-Descripcion del Programa:
+Descripcion del Programa: . Que lea una cadena y diga cuantas vocales hay. 
 ---------------------------------------------------*/
 
-#include <math.h>
-#include <stdlib.h>
 #include <iostream>
-#include <time.h>
-#include <cstdlib>
-#include <algorithm>
 
 using namespace std;
 
-//======================================================
-const int arraySize = 10;
-int elArray[arraySize];
-//=======================================================
-void rellenarRandom(int elArray[], int n);
-void mostrarArray(int elArray[], int n);
-void sortRelleno(int elArray[], int n);
+// Definición de constantes
+const string MENSAJE_INICIO = "**********************************";
+const string MENSAJE_COMPILACION = " Se compilo sin errores";
+const string MENSAJE_FIN = "**********************************";
+const string MENSAJE_PEDIR_CADENA = "Introduce una cadena de texto: ";
 
-/*=======================================================
-// FUNCION PRINCIPAL
-//======================================================*/
-int main()
-{
-    srand(time(NULL));
-
-    cout << "**********************************" << endl
-         << endl;
-    cout << "  Se compilo sin errores" << endl
-         << endl;
-    cout << "**********************************\n";
-
-    system("PAUSE");
-    system("cls");
-
-    rellenarRandom(elArray, arraySize);
-    sortRelleno(elArray, arraySize);
-    mostrarArray(elArray, arraySize);
-    return 0;
+// Función para pedir al usuario que ingrese una cadena de texto
+string pedirCadena() {
+  string cadena;
+  cout << MENSAJE_PEDIR_CADENA;
+  cin >> cadena;
+  return cadena;
 }
-/*=======================================================
-// FUNCIONES
-//=======================================================*/
 
-//------------------------------------------
-void rellenarRandom(int elArray[], int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        elArray[i] = rand() % 100 + 1;
+// Función para contar la cantidad de vocales en una cadena
+int contarVocales(string cadena) {
+  int contador = 0;
+  for (char caracter : cadena) {
+    // Convertir el caracter a minúscula
+    char letraMinuscula = tolower(caracter);
+
+    // Si el caracter es una vocal, aumentar el contador
+    if (letraMinuscula == 'a' || letraMinuscula == 'e' || letraMinuscula == 'i' || letraMinuscula == 'o' || letraMinuscula == 'u') {
+      contador++;
     }
+  }
+  return contador;
 }
 
-void sortRelleno(int elArray[], int n)
-{
-
-    // sort(elArray, elArray + n); // ORDENA NUMEROS DE MENOR A MAYOR
-
-    sort(elArray, elArray + n, greater<int>()); // ORDENA NUMEROS DE MAYOR A MENOR
+// Función para mostrar el resultado
+void mostrarResultado(int cantidadVocales) {
+  cout << "La cadena tiene " << cantidadVocales << " vocales." << endl;
 }
 
-void mostrarArray(int elArray[], int n)
-{
-    cout << "Los " << n << " números aleatorios son:" << endl;
-    for (int i = 0; i < n; i++)
-    {
-        cout << elArray[i] << " ";
-    }
-    cout << endl;
+// Función principal
+int main() {
+  // Mostrar mensaje de inicio
+  cout << MENSAJE_INICIO << endl << endl;
+  cout << MENSAJE_COMPILACION << endl << endl;
+  cout << MENSAJE_FIN << endl;
+
+  // Pausar la pantalla y limpiar la consola
+  system("PAUSE");
+  system("cls");
+
+  // Pedir la cadena al usuario
+  string cadena = pedirCadena();
+
+  // Contar las vocales
+  int cantidadVocales = contarVocales(cadena);
+
+  // Mostrar el resultado
+  mostrarResultado(cantidadVocales);
+
+  return 0;
 }

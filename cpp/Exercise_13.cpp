@@ -5,7 +5,8 @@ NombredelPrograma:
 Lenguaje de Programacion: C++
 Programador: Juan Carlos Navas
 Cedula: V-28.326.698
-Descripcion del Programa:
+Descripcion del Programa:  Que pinte un tablero de ajedrez, los peones con la letra P, las torres con T, los caballos con C, 
+los alfiles con A, el rey con R y la reina con M. 
 ---------------------------------------------------*/
 
 #include <math.h>

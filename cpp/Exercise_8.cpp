@@ -5,7 +5,9 @@ NombredelPrograma:
 Lenguaje de Programacion: C++
 Programador: Juan Carlos Navas
 Cedula: V-28.326.698
-Descripcion del Programa:
+Descripcion del Programa: Que lea 5 números por teclado y los cargue a un array, los copie a otro array multiplicados por 
+10 luego los pase a un tercer array ordenándolos de menor a mayor y por ultimo muestre los tres 
+array por pantalla.
 ---------------------------------------------------*/
 
 #include <math.h>

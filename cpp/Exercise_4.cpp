@@ -5,7 +5,8 @@ NombredelPrograma:
 Lenguaje de Programacion: C++
 Programador: Juan Carlos Navas
 Cedula: V-28.326.698
-Descripcion del Programa:
+Descripcion del Programa: Que rellene un array con 10 números aleatorios y los muestre en pantalla en orden 
+descendentes
 ---------------------------------------------------*/
 
 #include <math.h>
@@ -21,9 +22,9 @@ using namespace std;
 const int arraySize = 10;
 int elArray[arraySize];
 //=======================================================
-void rellenarRandom(int elArray[], int n);
-void mostrarArray(int elArray[], int n);
-void sortRelleno(int elArray[], int n);
+void rellenarRandom(int elArray[], int arraySize);
+void mostrarArray(int elArray[], int arraySize);
+void sortRelleno(int elArray[], int arraySize);
 
 /*=======================================================
 // FUNCION PRINCIPAL
@@ -51,26 +52,26 @@ int main()
 //=======================================================*/
 
 //------------------------------------------
-void rellenarRandom(int elArray[], int n)
+void rellenarRandom(int elArray[], int arraySize)
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < arraySize; i++)
     {
         elArray[i] = rand() % 100 + 1;
     }
 }
 
-void sortRelleno(int elArray[], int n)
+void sortRelleno(int elArray[], int arraySize)
 {
 
     // sort(elArray, elArray + n); // ORDENA NUMEROS DE MENOR A MAYOR
 
-    sort(elArray, elArray + n, greater<int>()); // ORDENA NUMEROS DE MAYOR A MENOR
+    sort(elArray, elArray + arraySize, greater<int>()); // ORDENA NUMEROS DE MAYOR A MENOR
 }
 
-void mostrarArray(int elArray[], int n)
+void mostrarArray(int elArray[], int arraySize)
 {
-    cout << "Los " << n << " números aleatorios son:" << endl;
-    for (int i = 0; i < n; i++)
+    cout << "Los " << arraySize << " numeros aleatorios son:" << endl;
+    for (int i = 0; i < arraySize; i++)
     {
         cout << elArray[i] << " ";
     }

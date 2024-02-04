@@ -5,7 +5,8 @@ NombredelPrograma:
 Lenguaje de Programacion: C++
 Programador: Juan Carlos Navas
 Cedula: V-28.326.698
-Descripcion del Programa:
+Descripcion del Programa: Que lea 5 números por teclado, los copie a un array multiplicados por 2 y muestre por pantalla 
+los valores originales y los valores del array . 
 ---------------------------------------------------*/
 
 #include <math.h>

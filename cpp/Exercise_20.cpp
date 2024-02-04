@@ -5,9 +5,8 @@ NombredelPrograma:
 Lenguaje de Programacion: C++
 Programador: Juan Carlos Navas
 Cedula: V-28.326.698
-Descripcion del Programa:
+Descripcion del Programa:  Que lea una cadena y diga cuantas mayúsculas hay. 
 ---------------------------------------------------*/
-
 #include <math.h>
 #include <stdlib.h>
 #include <iostream>
@@ -18,61 +17,44 @@ Descripcion del Programa:
 using namespace std;
 
 //======================================================
-const int arraySize = 10;
-int elArray[arraySize];
+string chain;
+int mayusCount = 0;
 //=======================================================
-void rellenarRandom(int elArray[], int n);
-void mostrarArray(int elArray[], int n);
-void sortRelleno(int elArray[], int n);
 
-/*=======================================================
+void inputChain(string& chain) {
+    // Pide al usuario que ingrese una cadena de texto y la guarda en la referencia de cadena
+    cout << "Introduce una cadena de texto: ";
+    cin >> chain;
+}
+
+void mayusFinde(string chain, int& mayusCount) {
+    for (char caracter : chain) {
+        // Si el caracter es una letra mayúscula, aumentar el contador
+        if (isupper(caracter)) {
+            mayusCount++;
+        }
+    }
+}
+
+void mostrarMayus(int mayusCount) {
+    cout << "La cadena tiene " << mayusCount << " letras mayusculas." << endl;
+}
+
+//=======================================================
 // FUNCION PRINCIPAL
-//======================================================*/
-int main()
-{
-    srand(time(NULL));
+//======================================================
+int main() {
 
-    cout << "**********************************" << endl
-         << endl;
-    cout << "  Se compilo sin errores" << endl
-         << endl;
+    cout << "**********************************" << endl << endl;
+    cout << "  Se compilo sin errores" << endl << endl;
     cout << "**********************************\n";
 
     system("PAUSE");
     system("cls");
 
-    rellenarRandom(elArray, arraySize);
-    sortRelleno(elArray, arraySize);
-    mostrarArray(elArray, arraySize);
+    inputChain(chain);
+    mayusFinde(chain, mayusCount);
+    mostrarMayus(mayusCount);
+
     return 0;
-}
-/*=======================================================
-// FUNCIONES
-//=======================================================*/
-
-//------------------------------------------
-void rellenarRandom(int elArray[], int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        elArray[i] = rand() % 100 + 1;
-    }
-}
-
-void sortRelleno(int elArray[], int n)
-{
-
-    // sort(elArray, elArray + n); // ORDENA NUMEROS DE MENOR A MAYOR
-
-    sort(elArray, elArray + n, greater<int>()); // ORDENA NUMEROS DE MAYOR A MENOR
-}
-
-void mostrarArray(int elArray[], int n)
-{
-    cout << "Los " << n << " números aleatorios son:" << endl;
-    for (int i = 0; i < n; i++)
-    {
-        cout << elArray[i] << " ";
-    }
-    cout << endl;
 }

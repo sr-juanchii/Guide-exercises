@@ -5,7 +5,7 @@ NombredelPrograma:
 Lenguaje de Programacion: C++
 Programador: Juan Carlos Navas
 Cedula: V-28.326.698
-Descripcion del Programa:
+Descripcion del Programa: . Que rellene un array con los 100 primeros números inpares y muestre su suma. 
 ---------------------------------------------------*/
 
 #include <math.h>

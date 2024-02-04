@@ -5,7 +5,8 @@ NombredelPrograma:
 Lenguaje de Programacion: C++
 Programador: Juan Carlos Navas
 Cedula: V-28.326.698
-Descripcion del Programa:
+Descripcion del Programa: . Que lea 10 números por teclado, los almacene en un array y muestre la media aritmética (media 
+aritmética es igual a la sumatoria de los valores en la cantidad de valores).
 ---------------------------------------------------*/
 
 #include <math.h>
@@ -20,17 +21,18 @@ using namespace std;
 //======================================================
 const int arraySize = 10;
 int elArray[arraySize];
+
+int laSuma = 0;
 //=======================================================
-void rellenarRandom(int elArray[], int n);
-void mostrarArray(int elArray[], int n);
-void sortRelleno(int elArray[], int n);
+void rellenarArray(int elArray[], int arraySize);
+double calcMedia(int laSuma, int arraySize);                     // Esta función debe tener dos parámetros de tipo int, no double ni int[]
+void mostrarArray(int elArray[], int arraySize, double laMedia); // Esta función debe recibir la media como parámetro
 
 /*=======================================================
 // FUNCION PRINCIPAL
 //======================================================*/
 int main()
 {
-    srand(time(NULL));
 
     cout << "**********************************" << endl
          << endl;
@@ -41,9 +43,9 @@ int main()
     system("PAUSE");
     system("cls");
 
-    rellenarRandom(elArray, arraySize);
-    sortRelleno(elArray, arraySize);
-    mostrarArray(elArray, arraySize);
+    rellenarArray(elArray, arraySize);
+    double laMedia = calcMedia(laSuma, arraySize); // Esta variable debe recibir el valor que devuelve la función calcMedia
+    mostrarArray(elArray, arraySize, laMedia);     // Esta función debe recibir la media como argumento
     return 0;
 }
 /*=======================================================
@@ -51,28 +53,30 @@ int main()
 //=======================================================*/
 
 //------------------------------------------
-void rellenarRandom(int elArray[], int n)
+void rellenarArray(int elArray[], int arraySize)
 {
-    for (int i = 0; i < n; i++)
+    cout << "Introduce 10 números por teclado:\n";
+    for (int i = 0; i < arraySize; i++)
     {
-        elArray[i] = rand() % 100 + 1;
+        cin >> elArray[i];
+        laSuma += elArray[i];
     }
 }
 
-void sortRelleno(int elArray[], int n)
+double calcMedia(int laSuma, int arraySize) // Esta función debe tener dos parámetros de tipo int, no double ni int[]
 {
-
-    // sort(elArray, elArray + n); // ORDENA NUMEROS DE MENOR A MAYOR
-
-    sort(elArray, elArray + n, greater<int>()); // ORDENA NUMEROS DE MAYOR A MENOR
+    double laMedia;                       // declare the variable
+    laMedia = (double)laSuma / arraySize; // calculate the media
+    return laMedia;                       // return the result
 }
 
-void mostrarArray(int elArray[], int n)
+void mostrarArray(int elArray[], int arraySize, double laMedia) // Esta función debe recibir la media como parámetro
 {
-    cout << "Los " << n << " números aleatorios son:" << endl;
-    for (int i = 0; i < n; i++)
+    cout << "El array de los 10 números es:\n";
+    for (int i = 0; i < arraySize; i++)
     {
-        cout << elArray[i] << " ";
+        cout << elArray[i] << " "; // Muestra el valor del array
     }
-    cout << endl;
+    cout << "\n";
+    cout << "La media aritmética de los 10 números es: " << laMedia << "\n"; // Muestra la media aritmética
 }

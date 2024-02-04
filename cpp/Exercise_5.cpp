@@ -5,7 +5,8 @@ NombredelPrograma:
 Lenguaje de Programacion: C++
 Programador: Juan Carlos Navas
 Cedula: V-28.326.698
-Descripcion del Programa:
+Descripcion del Programa:. Que lea 10 números por teclado, los almacene en un array y muestre la suma, resta, 
+multiplicación y división de todos. 
 ---------------------------------------------------*/
 
 #include <math.h>

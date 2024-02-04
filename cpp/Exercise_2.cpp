@@ -5,7 +5,8 @@ NombredelPrograma:
 Lenguaje de Programacion: C++
 Programador: Juan Carlos Navas
 Cedula: V-28.326.698
-Descripcion del Programa:
+Descripcion del Programa: Que rellene un array con los 100 primeros números naturales pares y los muestre en pantalla en 
+orden descendente.
 ---------------------------------------------------*/
 
 #include <math.h>
